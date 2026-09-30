@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@
         header {
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 40px 20px;
+            padding: 40px 20px 0;
             text-align: center;
         }
 
@@ -48,17 +48,8 @@
             margin-bottom: 20px;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        h2 {
-            margin: 5px 0 20px 0;
-            font-weight: 300;
-            font-size: 1.2em;
-            color: #ecf0f1;
-        }
+        h1 { margin: 0; font-size: 2.5em; }
+        h2 { margin: 5px 0 20px 0; font-weight: 300; font-size: 1.2em; color: #ecf0f1; }
 
         .social-links a {
             color: var(--secondary-color);
@@ -68,14 +59,50 @@
             transition: color 0.3s;
         }
 
-        .social-links a:hover {
+        .social-links a:hover { color: var(--white); }
+
+        /* Estilos dos Separadores (Abas) */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.1);
             color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-btn.active {
+            background: var(--bg-color);
+            color: var(--primary-color);
+            font-weight: bold;
         }
 
         main {
             max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0 auto 40px;
+            padding: 20px;
+        }
+
+        /* Ocultar/Mostrar conteúdos das abas */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         section {
@@ -93,13 +120,38 @@
             margin-top: 0;
         }
 
-        ul {
-            padding-left: 20px;
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+
+        /* Estilos da lista de publicações */
+        .publicacao-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .publicacao-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
-        li {
-            margin-bottom: 10px;
+        .pub-ano {
+            font-weight: bold;
+            color: var(--secondary-color);
+            min-width: 60px;
+            font-size: 1.1em;
         }
+
+        .pub-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.05em;
+        }
+
+        .pub-info a:hover { text-decoration: underline; color: var(--secondary-color); }
+        .pub-info span { color: var(--light-text); font-size: 0.9em; display: block; margin-top: 5px; }
 
         footer {
             text-align: center;
@@ -109,16 +161,10 @@
             font-size: 0.9em;
         }
 
-        /* Responsividade */
         @media (min-width: 768px) {
-            .profile-container {
-                flex-direction: row;
-                text-align: left;
-            }
-            .profile-pic {
-                margin-right: 30px;
-                margin-bottom: 0;
-            }
+            .profile-container { flex-direction: row; text-align: left; }
+            .profile-pic { margin-right: 30px; margin-bottom: 0; }
+            .tabs-nav { justify-content: flex-start; max-width: 800px; margin: 30px auto 0; }
         }
     </style>
 </head>
@@ -126,8 +172,7 @@
 
     <header>
         <div class="profile-container">
-            <!-- Substitua 'perfil.jpeg' pelo caminho da sua foto no repositório -->
-            <img src="perfil.jpeg" alt="Marcos Oliveira Prates" class="profile-pic">
+            <img src="perfil.jpg" alt="Marcos Oliveira Prates" class="profile-pic">
             <div>
                 <h1>Marcos Oliveira Prates</h1>
                 <h2>Professor Associado | Departamento de Estatística | UFMG</h2>
@@ -138,54 +183,159 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Navegação dos Separadores -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="abrirAba(event, 'resumo')">Perfil Geral</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'publicacoes')">Publicações (ORCID)</button>
+        </div>
     </header>
 
     <main>
-        <section id="sobre">
-            <h3>Sobre Mim</h3>
-            <p>Em 2006 obteve seu bacharelado em Matemática Computacional pela Universidade Federal de Minas Gerais (UFMG) e seu mestrado em Estatística em 2008 pela mesma instituição. Em 2011 recebeu seu título de Doutor pela University of Connecticut aonde foi professor visitante de 2019 à 2020. Atualmente é professor Associado da UFMG e atua nos programas de graduação e pós-graduação em Estatística.</p>
-            <p>Foi Coordenador do programa de pós-graduação em Estatística da UFMG (2016-2018), foi secretário (2015-2016) e tesoureiro (2023-2024) do ISBRA capítulo Brasileiro do ISBA, também foi Presidente da Associação Brasileira de Estatística (2020-2022). Atualmente é Bolsista de Produtividade em Pesquisa do CNPq - Nível B.</p>
-        </section>
+        <!-- CONTEÚDO 1: PERFIL GERAL -->
+        <div id="resumo" class="tab-content active">
+            <section id="sobre">
+                <h3>Sobre Mim</h3>
+                <p>Em 2006 obteve o seu bacharelato em Matemática Computacional pela Universidade Federal de Minas Gerais (UFMG) e o seu mestrado em Estatística em 2008 pela mesma instituição. Em 2011 recebeu o seu título de Doutor pela University of Connecticut onde foi professor visitante de 2019 a 2020. Atualmente é professor Associado da UFMG e atua nos programas de graduação e pós-graduação em Estatística.</p>
+                <p>Foi Coordenador do programa de pós-graduação em Estatística da UFMG (2016-2018), foi secretário (2015-2016) e tesoureiro (2023-2024) do ISBRA (capítulo Brasileiro do ISBA), sendo também Presidente da Associação Brasileira de Estatística (2020-2022). Atualmente é Bolsista de Produtividade em Pesquisa do CNPq - Nível B.</p>
+            </section>
 
-        <section id="interesses">
-            <h3>Áreas de Interesse e Pesquisa</h3>
-            <ul>
-                <li>Aprendizado de Máquina.</li>
-                <li>Estatística Bayesiana.</li>
-                <li>Estatística Espacial.</li>
-                <li>Modelos Lineares Generalizados Mistos.</li>
-            </ul>
-        </section>
+            <section id="interesses">
+                <h3>Áreas de Interesse e Pesquisa</h3>
+                <ul>
+                    <li>Aprendizado de Máquina</li>
+                    <li>Estatística Bayesiana</li>
+                    <li>Estatística Espacial</li>
+                    <li>Modelos Lineares Generalizados Mistos</li>
+                </ul>
+            </section>
 
-        <section id="formacao">
-            <h3>Formação Acadêmica</h3>
-            <ul>
-                <li><strong>Pós-Doutorado (2011-2012):</strong> Universidade Estadual de Campinas (UNICAMP).</li>
-                <li><strong>Doutorado em Estatística (2007-2011):</strong> University of Connecticut (UConn), Estados Unidos. Título da Tese: <em>Link Specification and Spatial Dependence for Generalized Linear Mixed Models</em>. Orientador: Jun Yan.</li>
-                <li><strong>Mestrado em Estatística (2007-2008):</strong> Universidade Federal de Minas Gerais (UFMG). Título da Dissertação: <em>Método Scan Flexível para Detecção em Árvores Hierárquicas</em>. Orientador: Renato Martins Assunção.</li>
-                <li><strong>Graduação em Matemática Computacional (2003-2006):</strong> Universidade Federal de Minas Gerais (UFMG).</li>
-            </ul>
-        </section>
+            <section id="formacao">
+                <h3>Formação Acadêmica</h3>
+                <ul>
+                    <li><strong>Pós-Doutorado (2011-2012):</strong> Universidade Estadual de Campinas (UNICAMP).</li>
+                    <li><strong>Doutorado em Estatística (2007-2011):</strong> University of Connecticut (UConn), EUA. Título: <em>Link Specification and Spatial Dependence for Generalized Linear Mixed Models</em>.</li>
+                    <li><strong>Mestrado em Estatística (2007-2008):</strong> UFMG. Título: <em>Método Scan Flexível para Detecção em Árvores Hierárquicas</em>.</li>
+                    <li><strong>Graduação em Matemática Computacional (2003-2006):</strong> UFMG.</li>
+                </ul>
+            </section>
+        </div>
 
-        <section id="publicacoes">
-            <h3>Produção Científica e Métricas</h3>
-            <p>De acordo com os dados mais recentes do Google Scholar, possuo um total de 79 trabalhos publicados, alcançando a marca de 1198 citações e um Fator H de 11. Para uma lista completa e atualizada de publicações, por favor visite meu <a href="https://scholar.google.com.br/citations?user=Ujun714AAAAJ&hl=pt-BR" target="_blank">Google Scholar</a> ou meu currículo <a href="http://lattes.cnpq.br/7893235207392165" target="_blank">Lattes</a>.</p>
-        </section>
-
-        <section id="softwares">
-            <h3>Softwares e Pacotes Desenvolvidos</h3>
-            <ul>
-                <li><strong>HeckmanEM:</strong> Fit Normal or Student-t Heckman Selection Models.</li>
-                <li><strong>OBASpatial:</strong> Objective Bayesian Analysis for Spatial Regression Models.</li>
-                <li><strong>RASCO:</strong> An R Package to Alleviate Spatial Confounding.</li>
-                <li><strong>TGMRF:</strong> Transformed Gaussian Markov Random Fields for Poisson regression.</li>
-            </ul>
-        </section>
+        <!-- CONTEÚDO 2: PUBLICAÇÕES VIA ORCID -->
+        <div id="publicacoes" class="tab-content">
+            <section>
+                <h3>Artigos e Publicações Recentes</h3>
+                <p><em>Esta lista é atualizada automaticamente em tempo real a partir do meu registo ORCID oficial.</em></p>
+                <div id="lista-publicacoes">
+                    <p>A carregar publicações...</p>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Marcos Oliveira Prates. Página gerada a partir dos dados do Currículo Lattes.</p>
+        <p>&copy; 2026 Marcos Oliveira Prates. Página atualizada via Lattes e ORCID.</p>
     </footer>
 
+    <script>
+        // Função para alternar entre os separadores
+        function abrirAba(evento, idAba) {
+            let i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            document.getElementById(idAba).classList.add("active");
+            evento.currentTarget.classList.add("active");
+        }
+
+        // Função para procurar publicações no ORCID API v3.0
+        async function carregarORCID() {
+            // O seu ID ORCID
+            const orcidID = "0000-0001-8077-4898";
+            const url = `https://pub.orcid.org/v3.0/${orcidID}/works`;
+            const container = document.getElementById("lista-publicacoes");
+
+            try {
+                const resposta = await fetch(url, {
+                    headers: { "Accept": "application/json" }
+                });
+
+                if (!resposta.ok) { throw new Error("Erro na requisição ao ORCID"); }
+
+                const dados = await resposta.json();
+                const trabalhos = dados.group;
+
+                if (!trabalhos || trabalhos.length === 0) {
+                    container.innerHTML = "<p>Nenhuma publicação encontrada no perfil ORCID.</p>";
+                    return;
+                }
+
+                // Processar e organizar os dados
+                let listaTrabalhos = trabalhos.map(grupo => {
+                    const resumo = grupo["work-summary"][0];
+                    const titulo = resumo.title?.title?.value || "Título indisponível";
+                    const ano = resumo["publication-date"]?.year?.value || "N/A";
+                    const revista = resumo["journal-title"]?.value || "";
+                    
+                    let link = "#";
+                    // Tentar obter URL direta
+                    if (resumo.url && resumo.url.value) {
+                        link = resumo.url.value;
+                    } 
+                    // Tentar obter via DOI se não houver URL
+                    else if (resumo["external-ids"] && resumo["external-ids"]["external-id"]) {
+                        const doiObj = resumo["external-ids"]["external-id"].find(id => id["external-id-type"] === "doi");
+                        if (doiObj && doiObj["external-id-url"] && doiObj["external-id-url"].value) {
+                            link = doiObj["external-id-url"].value;
+                        }
+                    }
+
+                    return { titulo, ano, revista, link };
+                });
+
+                // Ordenar do ano mais recente para o mais antigo
+                listaTrabalhos.sort((a, b) => {
+                    let anoA = a.ano === "N/A" ? 0 : parseInt(a.ano);
+                    let anoB = b.ano === "N/A" ? 0 : parseInt(b.ano);
+                    return anoB - anoA;
+                });
+
+                // Limpar container e gerar HTML
+                container.innerHTML = "";
+                listaTrabalhos.forEach(trab => {
+                    const div = document.createElement("div");
+                    div.className = "publicacao-item";
+                    
+                    let linkTag = trab.link !== "#" 
+                        ? `<a href="${trab.link}" target="_blank" rel="noopener noreferrer">${trab.titulo}</a>` 
+                        : trab.titulo;
+
+                    div.innerHTML = `
+                        <div class="pub-ano">${trab.ano}</div>
+                        <div class="pub-info">
+                            <strong>${linkTag}</strong>
+                            <span>${trab.revista}</span>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+
+            } catch (erro) {
+                console.error("Erro ao carregar do ORCID:", erro);
+                container.innerHTML = "<p>Ocorreu um erro ao tentar carregar as publicações de forma automática. Verifique o seu perfil ORCID.</p>";
+            }
+        }
+
+        // Executar a função quando a página for carregada
+        document.addEventListener('DOMContentLoaded', carregarORCID);
+    </script>
 </body>
 </html>
