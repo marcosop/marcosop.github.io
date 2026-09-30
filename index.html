@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos Oliveira Prates - UFMG</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #18bc9c;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --light-text: #777;
+            --white: #fff;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary-color);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            margin: 5px 0 20px 0;
+            font-weight: 300;
+            font-size: 1.2em;
+            color: #ecf0f1;
+        }
+
+        .social-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--white);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: var(--white);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        section h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 0.9em;
+        }
+
+        /* Responsividade */
+        @media (min-width: 768px) {
+            .profile-container {
+                flex-direction: row;
+                text-align: left;
+            }
+            .profile-pic {
+                margin-right: 30px;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="profile-container">
+            <!-- Substitua 'perfil.jpg' pelo caminho da sua foto no repositório -->
+            <img src="perfil.jpg" alt="Marcos Oliveira Prates" class="profile-pic">
+            <div>
+                <h1>Marcos Oliveira Prates</h1>
+                <h2>Professor Associado | Departamento de Estatística | UFMG</h2>
+                <div class="social-links">
+                    <a href="http://lattes.cnpq.br/7893235207392165" target="_blank">Lattes</a> |
+                    <a href="https://scholar.google.com.br/citations?user=Ujun714AAAAJ&hl=pt-BR" target="_blank">Google Scholar</a> |
+                    <a href="https://orcid.org/0000-0001-8077-4898" target="_blank">ORCID</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="sobre">
+            <h3>Sobre Mim</h3>
+            <p>Em 2006 obteve seu bacharelado em Matemática Computacional pela Universidade Federal de Minas Gerais (UFMG) e seu mestrado em Estatística em 2008 pela mesma instituição[cite: 2]. Em 2011 recebeu seu título de Doutor pela University of Connecticut aonde foi professor visitante de 2019 à 2020[cite: 2]. Atualmente é professor Associado da UFMG e atua nos programas de graduação e pós-graduação em Estatística[cite: 2].</p>
+            <p>Foi Coordenador do programa de pós-graduação em Estatística da UFMG (2016-2018), foi secretário (2015-2016) e tesoureiro (2023-2024) do ISBRA capítulo Brasileiro do ISBA, também foi Presidente da Associação Brasileira de Estatística (2020-2022)[cite: 2]. Atualmente é Bolsista de Produtividade em Pesquisa do CNPq - Nível B[cite: 2].</p>
+        </section>
+
+        <section id="interesses">
+            <h3>Áreas de Interesse e Pesquisa</h3>
+            <ul>
+                <li>Aprendizado de Máquina[cite: 2].</li>
+                <li>Estatística Bayesiana[cite: 2].</li>
+                <li>Estatística Espacial[cite: 2].</li>
+                <li>Modelos Lineares Generalizados Mistos[cite: 2].</li>
+            </ul>
+        </section>
+
+        <section id="formacao">
+            <h3>Formação Acadêmica</h3>
+            <ul>
+                <li><strong>Pós-Doutorado (2011-2012):</strong> Universidade Estadual de Campinas (UNICAMP)[cite: 3].</li>
+                <li><strong>Doutorado em Estatística (2007-2011):</strong> University of Connecticut (UConn), Estados Unidos[cite: 2]. Título da Tese: <em>Link Specification and Spatial Dependence for Generalized Linear Mixed Models</em>[cite: 2]. Orientador: Jun Yan[cite: 2].</li>
+                <li><strong>Mestrado em Estatística (2007-2008):</strong> Universidade Federal de Minas Gerais (UFMG)[cite: 3]. Título da Dissertação: <em>Método Scan Flexível para Detecção em Árvores Hierárquicas</em>[cite: 3]. Orientador: Renato Martins Assunção[cite: 3].</li>
+                <li><strong>Graduação em Matemática Computacional (2003-2006):</strong> Universidade Federal de Minas Gerais (UFMG)[cite: 3].</li>
+            </ul>
+        </section>
+
+        <section id="publicacoes">
+            <h3>Produção Científica e Métricas</h3>
+            <p>De acordo com os dados mais recentes do Google Scholar, possuo um total de 79 trabalhos publicados, alcançando a marca de 1198 citações e um Fator H de 11[cite: 16]. Para uma lista completa e atualizada de publicações, por favor visite meu <a href="https://scholar.google.com.br/citations?user=Ujun714AAAAJ&hl=pt-BR" target="_blank">Google Scholar</a> ou meu currículo <a href="http://lattes.cnpq.br/7893235207392165" target="_blank">Lattes</a>.</p>
+        </section>
+
+        <section id="softwares">
+            <h3>Softwares e Pacotes Desenvolvidos</h3>
+            <ul>
+                <li><strong>HeckmanEM:</strong> Fit Normal or Student-t Heckman Selection Models[cite: 27].</li>
+                <li><strong>OBASpatial:</strong> Objective Bayesian Analysis for Spatial Regression Models[cite: 27].</li>
+                <li><strong>RASCO:</strong> An R Package to Alleviate Spatial Confounding[cite: 27].</li>
+                <li><strong>TGMRF:</strong> Transformed Gaussian Markov Random Fields for Poisson regression[cite: 27].</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Marcos Oliveira Prates. Página gerada a partir dos dados do Currículo Lattes.</p>
+    </footer>
+
+</body>
+</html>
